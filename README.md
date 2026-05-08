@@ -1,6 +1,6 @@
 # 💼 Job Extractor
 
-A full-stack web scraping application that extracts job listings from any website in real-time. Built with **Python FastAPI** backend and **Next.js React** frontend. Deploy free on **Vercel + Railway**.
+A full-stack web scraping application that extracts job listings from website in real-time. Built with **Python FastAPI** backend and **Next.js React** frontend. Deploy free on **Vercel + Railway**.
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104-green?style=flat-square)](https://fastapi.tiangolo.com/)

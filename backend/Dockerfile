@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y \
     libpango-1.0-0 \
     libpangocairo-1.0-0 \
     libgtk-3-0 \
+    libdrm2 \
+    libgbm1 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -27,8 +29,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Playwright browsers during build
-RUN python -m playwright install
+# Install Playwright browsers and system dependencies
+RUN python -m playwright install && python -m playwright install-deps
 
 # Copy application code
 COPY . .
@@ -37,4 +39,9 @@ COPY . .
 EXPOSE 8080
 
 # Start application
+<<<<<<< Updated upstream
 CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}
+=======
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+
+>>>>>>> Stashed changes

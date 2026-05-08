@@ -16,10 +16,8 @@ A full-stack web scraping application that extracts job listings from any websit
 ✅ **Beautiful UI** - Modern, responsive React interface  
 ✅ **Async Backend** - Non-blocking Playwright scraper  
 ✅ **No Database** - Pure scraping, no storage needed  
-✅ **Free Deployment** - Vercel (frontend) + Railway (backend)  
 ✅ **Production Ready** - Error handling, logging, CORS  
 ✅ **Fully Configurable** - Support any website structure  
-✅ **Portfolio Project** - Perfect for internships/interviews  
 
 ---
 
@@ -37,7 +35,8 @@ A full-stack web scraping application that extracts job listings from any websit
 cd backend
 pip install -r requirements.txt
 playwright install
-python main.py
+python main.py or # or bash run_dev.sh
+
 ```
 ✅ Backend: `http://localhost:8000`
 
@@ -97,8 +96,6 @@ job_extractor/
 │   ├── .env.local
 │   └── README.md
 │
-├── setup.sh                # Quick setup
-├── COMPREHENSIVE_README.md # Full documentation ⭐
 └── .gitignore
 ```
 
@@ -136,68 +133,11 @@ curl "http://localhost:8000/api/scrape?url=https://realpython.github.io/fake-job
 
 ---
 
-## 📤 Deployment
-
-### Deploy Backend (Railway - $5 free credit)
-
-1. Push to GitHub
-2. Go to [railway.app](https://railway.app)
-3. "New Project" → "Deploy from GitHub"
-4. Select repository
-5. Railway auto-detects Python and deploys ✅
-
-**Get URL:** `https://your-backend.railway.app`
-
-### Deploy Frontend (Vercel - Free)
-
-1. Push to GitHub
-2. Go to [vercel.com](https://vercel.com)
-3. "New Project" → "Import from GitHub"
-4. Add environment variable:
-   ```
-   NEXT_PUBLIC_BACKEND_URL = https://your-backend.railway.app
-   ```
-5. Deploy ✅
-
-**Get URL:** `https://your-app.vercel.app`
-
----
-
-## 💰 Cost
-
-| Service | Tier | Cost |
-|---------|------|------|
-| Vercel | Free | $0 |
-| Railway | Free Trial | $0* |
-| **Total** | - | **$0/month** 🎉 |
-
-*After $5 credit (~2-3 months), $5/month for hobby tier
-
----
-
 ## 🛠️ Tech Stack
 
 - **Backend:** Python, FastAPI, Playwright, Pydantic
 - **Frontend:** Next.js, React, CSS Modules
 - **Deployment:** Vercel, Railway
-
----
-
-## 🔧 Configuration
-
-To support different websites, edit `backend/app/config.py`:
-
-```python
-@dataclass(frozen=True)
-class ScrapeConfig:
-    card_selector: str = "div.job-card"
-    title_selector: str = "h2.title"
-    company_selector: str = "h3.company"
-    location_selector: str = "p.location"
-    link_selector: str = "a.apply"
-```
-
-Find selectors by inspecting any job card on your target website.
 
 ---
 
@@ -219,46 +159,3 @@ Find selectors by inspecting any job card on your target website.
 | Frontend blank | Open browser console (F12) for errors |
 
 ---
-
-## 💡 Portfolio Tips
-
-✨ **Showcase This Project:**
-- Deploy it live (Vercel + Railway)
-- Add GitHub repository link
-- Write about your tech choices
-- mention in interviews/resume
-
-**Interview Talking Points:**
-- "Built async Playwright scraper for performance"
-- "Separated frontend/backend for independent scaling"
-- "Deployed full-stack app on free tier"
-- "Implemented real-time streaming frontend"
-
----
-
-## 📄 License
-
-MIT - Feel free to use for anything!
-
----
-
-## 🎯 Next Steps
-
-```bash
-# 1. Setup locally
-bash setup.sh
-
-# 2. Test it works
-# Open http://localhost:3000
-
-# 3. Deploy to production
-# Follow deployment section above
-
-# 4. Share on portfolio!
-```
-
-**Ready? Start with:** `bash setup.sh` 🚀
-
----
-
-**For detailed setup, configuration, and troubleshooting:** See [COMPREHENSIVE_README.md](COMPREHENSIVE_README.md)

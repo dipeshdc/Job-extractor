@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 
 # Install system dependencies for Playwright
 RUN apt-get update && apt-get install -y \
@@ -37,4 +37,4 @@ COPY . .
 EXPOSE 8080
 
 # Start application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}

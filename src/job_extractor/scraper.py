@@ -38,11 +38,14 @@ async def scrape_jobs(
             title_el = await card.query_selector(config.title_selector)
             company_el = await card.query_selector(config.company_selector)
             location_el = await card.query_selector(config.location_selector)
-            link_el = await card.query_selector(config.link_selector)
+            link_els = await card.query_selector_all(config.link_selector)
+            
+            # Get 2nd link (Apply) not 1st (Learn)
+            link_el = link_els[1] if len(link_els) > 1 else (link_els[0] if link_els else None)
 
-            title = (await title_el.text_content()) if title_el else ""
-            company = (await company_el.text_content()) if company_el else ""
-            location = (await location_el.text_content()) if location_el else ""
+            title = (await title_el.text_content()).strip() if title_el else ""
+            company = (await company_el.text_content()).strip() if company_el else ""
+            location = (await location_el.text_content()).strip() if location_el else ""
             href = (await link_el.get_attribute("href")) if link_el else None
 
             job_url = _normalize_url(url, href)
